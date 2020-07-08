@@ -1,49 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project: Js Stopwatch</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
 
-  <body>
-    <header class="noselect">
-      <h1>Stopwatch</h1>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project: Js Stopwatch</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-    <main>
-      <div class="stopwatch-display container noselect">
-        <div class="timer-display">
-          <span id="hour" class="timer-display">00</span>
-          <span class="timer-display">:</span>
-          <span id="minute" class="timer-display">00</span>
-          <span class="timer-display">:</span>
-          <span id="second" class="timer-display">00</span>
-          <span class="timer-display decisecond">:</span>
-          <span id="decisecond" class="timer-display decisecond">0</span>
-        </div>
+<body>
+  <header class="noselect">
+    <h1>Stopwatch</h1>
+  </header>
 
-        <div class="button-container">
-          <a id="start">Start</a>
-          <a id="stop">Reset</a>
-        </div>
+  <main>
+    <div class="stopwatch-display container noselect">
+      <div class="timer-display">
+        <span id="hour" class="timer-display">00</span>
+        <span class="timer-display">:</span>
+        <span id="minute" class="timer-display">00</span>
+        <span class="timer-display">:</span>
+        <span id="second" class="timer-display">00</span>
+        <span class="timer-display decisecond">:</span>
+        <span id="decisecond" class="timer-display decisecond">0</span>
       </div>
 
-      <div class="lap-container container">
-        <h4>Lap times</h4>
-        <ol id="lap-times" class="lap-list">
-          <li>Click the 'Lap' button while the stopwatch is running.</li>
-          <li>Lap times will be displayed here.</li>
-        </ol>
+      <div class="button-container">
+        <a id="start">Start</a>
+        <a id="stop">Reset</a>
       </div>
+    </div>
 
-      <footer class="noselect">
-        <span>&copy; FreetimeFM</span>
-      </footer>
+    <div class="lap-container container">
+      <h4>Lap times</h4>
+      <ol id="lap-times" class="lap-list">
+        <li>Click the 'Lap' button while the stopwatch is running.</li>
+        <li>Lap times will be displayed here.</li>
+      </ol>
+    </div>
+
+    <footer class="noselect">
+      <div class="footer-container">
         <a href="https://github.com/FreetimeFM/" target="_blank" class="author">&copy; FreetimeFM</a>
         <a href="https://github.com/FreetimeFM/Simple-Stopwatch" target="_blank" class="source">Source</a>
+      </div>
+    </footer>
 
     <script src="app.js"></script>
-  </body>
+</body>
+
 </html>
