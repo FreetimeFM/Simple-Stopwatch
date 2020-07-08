@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project: Js Stopwatch</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header class="noselect">
+      <h1>Stopwatch</h1>
+    </header>
+
+    <main>
+      <div class="stopwatch-display container noselect">
+        <div class="timer-display">
+          <span id="hour" class="timer-display">00</span>
+          <span class="timer-display">:</span>
+          <span id="minute" class="timer-display">00</span>
+          <span class="timer-display">:</span>
+          <span id="second" class="timer-display">00</span>
+          <span class="timer-display decisecond">:</span>
+          <span id="decisecond" class="timer-display decisecond">0</span>
+        </div>
+
+        <div class="button-container">
+          <a id="start">Start</a>
+          <a id="stop">Reset</a>
+        </div>
+      </div>
+
+      <div class="lap-container container">
+        <h4>Lap times</h4>
+        <ol id="lap-times" class="lap-list">
+          <li>Click the 'Lap' button while the stopwatch is running.</li>
+          <li>Lap times will be displayed here.</li>
+        </ol>
+      </div>
+
+      <footer class="noselect">
+        <span>&copy; A Baretto</span>
+      </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
