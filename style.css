@@ -111,13 +111,17 @@ footer {
   width: 100%;
   left: 0;
   bottom: 0;
-  background-color: #900000;
-  color: #c0c0c0;
-  border-top: 5px solid #c0c0c0;
+}
+
+.footer-container {
+  position: relative;
   padding: 15px;
   font-weight: 400;
   font-size: 15px;
-  text-align: center;
+  background-color: #900000;
+  color: #c0c0c0;
+  border-top: 5px solid #c0c0c0;
+}
 }
 
 .noselect {
