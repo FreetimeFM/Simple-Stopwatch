@@ -100,7 +100,6 @@ main {
   position: relative;
   padding-left: 0.8rem;
   border-bottom: 1px solid #c0c0c0;
-  transition: ease 1000;
 }
 
 .lap-list li:nth-child(even) {
