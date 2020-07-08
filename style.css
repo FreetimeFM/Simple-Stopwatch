@@ -157,6 +157,10 @@ footer {
     margin-bottom: 20px;
   }
 
+  .lap-list > li {
+    padding-right: 0.8rem;
+  }
+
   footer {
     padding: 5px;
   }
