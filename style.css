@@ -13,6 +13,11 @@
   padding: 0;
 }
 
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body {
   color: #c0c0c0;
   background-color: black;
