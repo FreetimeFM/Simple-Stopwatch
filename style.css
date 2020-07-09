@@ -25,10 +25,10 @@ body {
 }
 
 header {
-  background-color: #900000;
+  background-color: var(--secondary-bg-color);
   text-align: center;
-  border-bottom: #c0c0c0 solid 5px;
   padding: 0.5rem;
+  border-bottom: var(--accent-color) solid 5px;
 }
 
 header > h1 {
