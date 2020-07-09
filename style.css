@@ -8,11 +8,14 @@
   --primary-font-family: 'Nunito';
   --secondary-font-family: 'Trebuchet MS';
 }
+
+/* Css reset. */
 * {
   margin: 0;
   padding: 0;
 }
 
+/* Helps stick footer to bottom. */
 html {
   position: relative;
   min-height: 100%;
@@ -31,7 +34,7 @@ header {
   border-bottom: var(--accent-color) solid 5px;
 }
 
-header > h1 {
+header>h1 {
   font-weight: 900;
   font-size: 40px;
 }
@@ -47,6 +50,7 @@ main {
   border-radius: 10px;
 }
 
+/* Stopwatch container. */
 .stopwatch-display {
   margin: 20px auto;
   text-align: center;
@@ -55,15 +59,17 @@ main {
   position: relative;
 }
 
+/* container for the second, minute and hour display. */
 .timer-display {
   font-size: 5.5rem;
   margin-bottom: 20px;
 }
 
-.timer-display > span {
+.timer-display>span {
   margin: -10px;
 }
 
+/* For the last time unit. */
 .decisecond {
   font-size: 3rem;
 }
@@ -74,7 +80,6 @@ main {
   margin-bottom: 30px;
 }
 
-.button-container > a {
 .button-container>a {
   color: var(--accent-color);
   background-color: var(--secondary-bg-color);
@@ -93,17 +98,19 @@ main {
   border-color: var(--secondary-bg-color);
 }
 
+/* container for lap times. */
 .lap-container {
   margin-bottom: 50px;
 }
 
-.lap-container > h4 {
+.lap-container>h4 {
   font-weight: 400;
   font-size: 1.2rem;
   padding: 0.4rem 0.8rem;
   border-bottom: inherit;
 }
 
+/* Lap times list. */
 .lap-list {
   list-style-type: none;
   position: relative;
@@ -111,15 +118,17 @@ main {
   font-size: 1.1rem;
 }
 
-.lap-list > li {
+.lap-list>li {
   padding-left: 0.8rem;
   border-bottom: 1px solid var(--accent-color);
 }
 
+/* Adds background color to even rows. */
 .lap-list li:nth-child(even) {
   background-color: var(--secondary-bg-color);
 }
 
+/* Helps stick footer to bottom */
 footer {
   position: absolute;
   left: 0;
@@ -137,25 +146,32 @@ footer {
   font-size: 15px;
 }
 
-.footer-container > a {
+.footer-container>a {
   text-decoration: none;
   color: var(--accent-color);
   margin-right: 1rem;
 }
 
-.footer-container > a:hover {
+.footer-container>a:hover {
   text-decoration: underline;
 }
 
 .noselect {
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-  -khtml-user-select: none; /* Konqueror HTML */
-  -moz-user-select: none; /* Old versions of Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 }
 
+/* Css for smaller devices. */
 @media only screen and (max-width: 600px) {
   .timer-display {
     font-size: 3.5rem;
@@ -163,7 +179,7 @@ footer {
     padding: 0;
   }
 
-  .timer-display > span {
+  .timer-display>span {
     margin: -8px;
   }
 
@@ -177,13 +193,13 @@ footer {
     padding: 0;
   }
 
-  .button-container > a {
+  .button-container>a {
     font-size: 1.5rem;
     display: block;
     margin-bottom: 20px;
   }
 
-  .lap-list > li {
+  .lap-list>li {
     padding-right: 0.8rem;
   }
 
