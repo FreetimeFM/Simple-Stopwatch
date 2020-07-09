@@ -87,10 +87,10 @@ main {
 }
 
 .button-container a:hover {
-  color: #900000;
-  background-color: #c0c0c0;
+  color: var(--secondary-bg-color);
+  background-color: var(--accent-color);
   cursor: pointer;
-  border-color: #900000;
+  border-color: var(--secondary-bg-color);
 }
 
 .lap-container {
