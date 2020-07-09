@@ -121,10 +121,14 @@ main {
 }
 
 footer {
-  width: 100%;
   position: absolute;
   left: 0;
   bottom: 0;
+  height: 3.5rem;
+  width: 100%;
+  background-color: var(--secondary-bg-color);
+  border-top: 5px solid var(--accent-color);
+  margin: auto;
 }
 
 .footer-container {
