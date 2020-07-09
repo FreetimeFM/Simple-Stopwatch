@@ -83,7 +83,7 @@ main {
   border-radius: 10px;
   margin: 0px 5px;
   transition: ease 200ms;
-  font-size: 17px; /* TODO: Change to rem */
+  font-size: 1.1rem;
 }
 
 .button-container a:hover {
