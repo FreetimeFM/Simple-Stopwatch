@@ -132,13 +132,9 @@ footer {
 }
 
 .footer-container {
-  position: relative;
   padding: 15px;
   font-weight: 400;
   font-size: 15px;
-  background-color: #900000;
-  color: #c0c0c0;
-  border-top: 5px solid #c0c0c0;
 }
 
 .footer-container > a {
