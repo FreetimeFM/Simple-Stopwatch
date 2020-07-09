@@ -75,10 +75,11 @@ main {
 }
 
 .button-container > a {
-  color: #c0c0c0;
-  background-color: #900000;
+.button-container>a {
+  color: var(--accent-color);
+  background-color: var(--secondary-bg-color);
   padding: 10px 20px;
-  border: 2px solid #c0c0c0;
+  border: 2px solid var(--accent-color);
   border-radius: 10px;
   margin: 0px 5px;
   transition: ease 200ms;
