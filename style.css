@@ -39,6 +39,7 @@ header > h1 {
 main {
   width: 90%;
   margin: auto;
+  padding-bottom: 40px;
 }
 
 .container {
