@@ -43,7 +43,7 @@ main {
 }
 
 .container {
-  border: 5px solid #c0c0c0;
+  border: 5px solid var(--accent-color);
   border-radius: 10px;
 }
 
