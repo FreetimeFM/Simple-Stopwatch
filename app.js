@@ -19,30 +19,30 @@ class Stopwatch {
 
     // Getter for duration.
     Object.defineProperty(this, 'duration', {
-      get: function () {
+      get: function() {
         return duration;
       },
     });
 
     // if true, timer will be displayed on console.
-    this.displayTimer = function (value) {
+    this.displayTimer = function(value) {
       isDisplayed = value;
     };
 
-    this.setDuration = function (value) {
+    this.setDuration = function(value) {
       duration = value;
       updateHTMLTimerNow();
     };
 
     // Increments duration variable. To be run when after every second.
-    let incrementDuration = function () {
+    let incrementDuration = function() {
       duration++;
       updateHTMLTimer();
     };
 
     // Starts the stopwatch.
-    this.start = function () {
-      
+    this.start = function() {
+
       if (isRunning) {
         this.lap();
 
@@ -58,8 +58,8 @@ class Stopwatch {
     };
 
     // Stops the stopwatch.
-    this.stop = function () {
-      
+    this.stop = function() {
+
       if (isRunning) {
         timer.stop();
         isRunning = false;
@@ -73,19 +73,19 @@ class Stopwatch {
     };
 
     this.lap = () => {
-      
-      if(isReset) {
+
+      if (isReset) {
         lapTimes_list.innerHTML = ``;
       }
       isReset = false;
-      
+
       let existingList = lapTimes_list.innerHTML;
       lapTimes_list.innerHTML = `<li>${hour_span.innerHTML}:${
         minute_span.innerHTML
       }:${second_span.innerHTML}:${duration % 10}</li>${existingList}`;
     };
 
-    this.reset = function () {
+    this.reset = function() {
       duration = 0;
       updateHTMLTimerNow();
       lapTimes_list.innerHTML = `<li>Click the 'Lap' button while the stopwatch is running.</li>
@@ -93,11 +93,11 @@ class Stopwatch {
       isReset = true;
     };
 
-    const updateDecisecondSpan = function () {
+    const updateDecisecondSpan = function() {
       decisecond_span.innerHTML = duration % 10;
     };
 
-    const updateSecondSpan = function () {
+    const updateSecondSpan = function() {
       let seconds = Math.floor((duration / 10) % 60);
 
       if (seconds < 10) {
@@ -108,7 +108,7 @@ class Stopwatch {
       }
     };
 
-    const updateMinuteSpan = function () {
+    const updateMinuteSpan = function() {
       let minutes = Math.floor((duration / 600) % 60);
 
       if (minutes < 10) {
@@ -119,7 +119,7 @@ class Stopwatch {
       }
     };
 
-    const updateHourSpan = function () {
+    const updateHourSpan = function() {
       let hours = Math.floor((duration / 36000) % 60);
 
       if (hours < 10) {
@@ -133,7 +133,7 @@ class Stopwatch {
       }
     };
 
-    const updateHTMLTimer = function () {
+    const updateHTMLTimer = function() {
       updateDecisecondSpan();
 
       if (duration % 10 == 0) {
@@ -149,7 +149,7 @@ class Stopwatch {
       }
     };
 
-    const updateHTMLTimerNow = function () {
+    const updateHTMLTimerNow = function() {
       updateDecisecondSpan();
       updateSecondSpan();
       updateMinuteSpan();
@@ -157,7 +157,7 @@ class Stopwatch {
     };
 
     let changeStartButtonName = () => {
-      
+
       if (isRunning) {
         start_button.innerHTML = 'Lap';
 
@@ -167,7 +167,7 @@ class Stopwatch {
     };
 
     let changeStopButtonName = () => {
-      
+
       if (isRunning) {
         stop_button.innerHTML = 'Stop';
 
@@ -200,12 +200,12 @@ class Timer {
     var expected, timeout;
     this.interval = interval;
 
-    this.start = function () {
+    this.start = function() {
       expected = Date.now() + this.interval;
       timeout = setTimeout(step, this.interval);
     };
 
-    this.stop = function () {
+    this.stop = function() {
       clearTimeout(timeout);
     };
 
