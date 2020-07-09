@@ -112,7 +112,6 @@ main {
 }
 
 .lap-list > li {
-  position: relative;
   padding-left: 0.8rem;
   border-bottom: 1px solid #c0c0c0;
 }
