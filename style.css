@@ -19,9 +19,9 @@ html {
 }
 
 body {
-  color: #c0c0c0;
-  background-color: black;
-  font-family: Nunito, 'Trebuchet MS', sans-serif;
+  color: var(--accent-color);
+  background-color: var(--primary-bg-color);
+  font-family: var(--primary-font-family), var(--secondary-font-family), sans-serif;
 }
 
 header {
