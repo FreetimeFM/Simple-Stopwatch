@@ -113,7 +113,7 @@ main {
 
 .lap-list > li {
   padding-left: 0.8rem;
-  border-bottom: 1px solid #c0c0c0;
+  border-bottom: 1px solid var(--accent-color);
 }
 
 .lap-list li:nth-child(even) {
