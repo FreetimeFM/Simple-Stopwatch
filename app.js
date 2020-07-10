@@ -22,6 +22,11 @@ class Stopwatch {
       get: function () {
         return duration;
       },
+      set: elapsedDeciSeconds => {
+        if (!Number.isInteger(elapsedDeciSeconds)) throw new Error('Invalid input');
+        duration = elapsedDeciSeconds;
+        updateHTMLTimerNow();
+      },
     });
 
     // if true, timer will be displayed on console.
