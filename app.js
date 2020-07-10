@@ -141,8 +141,8 @@ class Stopwatch {
       }
     };
 
-    const updateHourSpan = function() {
-      let hours = Math.floor((duration / 36000) % 60);
+    const updateHourSpan = function () {
+      let hours = calculateHour();
 
       if (hours < 10) {
         hour_span.innerHTML = `0${hours}`;
