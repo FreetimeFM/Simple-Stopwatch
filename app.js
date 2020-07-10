@@ -86,6 +86,9 @@ class Stopwatch {
         duration % 10,
       ];
 
+      if (lapTimeCount === 1) {
+        lapTimes_list.innerHTML = `<li>${lapTimeCount}:- ${lapTime[0]}:${lapTime[1]}:${lapTime[2]}.${lapTime[3]}</li>`;
+      } else {
       let existingList = lapTimes_list.innerHTML;
         let difference = [
           Math.abs(previousLapTime[0] - lapTime[0]),
@@ -94,6 +97,10 @@ class Stopwatch {
           Math.abs(previousLapTime[3] - lapTime[3]),
         ];
 
+        lapTimes_list.innerHTML = `<li>${lapTimeCount}:- ${lapTime[0]}:${lapTime[1]}:${lapTime[2]}.${lapTime[3]} <em>(${difference[0]}:${difference[1]}:${difference[2]}.${difference[3]})</em></li>${existingList}`;
+      }
+      previousLapTime = lapTime;
+      lapTimeCount++;
     };
 
     this.reset = function() {
