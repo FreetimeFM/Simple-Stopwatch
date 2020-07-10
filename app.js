@@ -87,9 +87,13 @@ class Stopwatch {
       ];
 
       let existingList = lapTimes_list.innerHTML;
-      lapTimes_list.innerHTML = `<li>${hour_span.innerHTML}:${
-        minute_span.innerHTML
-      }:${second_span.innerHTML}:${duration % 10}</li>${existingList}`;
+        let difference = [
+          Math.abs(previousLapTime[0] - lapTime[0]),
+          Math.abs(previousLapTime[1] - lapTime[1]),
+          Math.abs(previousLapTime[2] - lapTime[2]),
+          Math.abs(previousLapTime[3] - lapTime[3]),
+        ];
+
     };
 
     this.reset = function() {
