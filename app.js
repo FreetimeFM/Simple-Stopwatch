@@ -75,6 +75,7 @@ class Stopwatch {
       isReset = false;
 
       let lapTime = [
+        calculateHours(),
         calculateMinutes(),
         calculateSeconds(),
         duration % 10,
@@ -135,7 +136,7 @@ class Stopwatch {
       return Math.floor((duration / 600) % 60);
     };
 
-    const calculateHour = (duration = this.duration) => {
+    const calculateHours = (duration = this.duration) => {
       return Math.floor((duration / 36000) % 60);
     };
 
@@ -164,7 +165,7 @@ class Stopwatch {
     };
 
     const updateHourSpan = function () {
-      let hours = calculateHour();
+      let hours = calculateHours();
 
       if (hours < 10) {
         hour_span.innerHTML = `0${hours}`;
