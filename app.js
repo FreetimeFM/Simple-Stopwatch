@@ -79,6 +79,13 @@ class Stopwatch {
       }
       isReset = false;
 
+      let lapTime = [
+        calculateHour(),
+        calculateMinute(),
+        calculateSecond(),
+        duration % 10,
+      ];
+
       let existingList = lapTimes_list.innerHTML;
       lapTimes_list.innerHTML = `<li>${hour_span.innerHTML}:${
         minute_span.innerHTML
