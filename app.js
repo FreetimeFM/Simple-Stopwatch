@@ -42,10 +42,8 @@ class Stopwatch {
 
     // Starts the stopwatch.
     this.start = function () {
-      
       if (isRunning) {
         this.lap();
-
       } else {
         // start stopwatch.
         timer.start();
@@ -59,12 +57,10 @@ class Stopwatch {
 
     // Stops the stopwatch.
     this.stop = function () {
-      
       if (isRunning) {
         timer.stop();
         isRunning = false;
         updateHTMLTimerNow();
-
       } else {
         this.reset();
       }
@@ -73,24 +69,75 @@ class Stopwatch {
     };
 
     this.lap = () => {
-      
-      if(isReset) {
+      if (isReset) {
         lapTimes_list.innerHTML = ``;
       }
       isReset = false;
-      
-      let existingList = lapTimes_list.innerHTML;
-      lapTimes_list.innerHTML = `<li>${hour_span.innerHTML}:${
-        minute_span.innerHTML
-      }:${second_span.innerHTML}:${duration % 10}</li>${existingList}`;
+
+      let lapTime = [
+        calculateHour(),
+        calculateMinute(),
+        calculateSecond(),
+        duration % 10,
+      ];
+
+      for (let i = 0; i < lapTime.length - 1; i++) {
+        const element = lapTime[i];
+
+        if (element < 10) {
+          lapTime[i] = `0${element}`;
+        }
+      }
+
+      if (lapTimeCount === 1) {
+        lapTimes_list.innerHTML = `<li>${lapTimeCount}:- ${lapTime[0]}:${lapTime[1]}:${lapTime[2]}.${lapTime[3]}</li>`;
+      } else {
+        let existingList = lapTimes_list.innerHTML;
+
+        let difference = [
+          Math.abs(previousLapTime[0] - lapTime[0]),
+          Math.abs(previousLapTime[1] - lapTime[1]),
+          Math.abs(previousLapTime[2] - lapTime[2]),
+          Math.abs(previousLapTime[3] - lapTime[3]),
+        ];
+
+        for (let i = 0; i < difference.length - 1; i++) {
+          const element = difference[i];
+
+          if (element < 10) {
+            difference[i] = `0${element}`;
+          }
+        }
+
+        lapTimes_list.innerHTML = `<li>${lapTimeCount}:- ${lapTime[0]}:${lapTime[1]}:${lapTime[2]}.${lapTime[3]} <em>(${difference[0]}:${difference[1]}:${difference[2]}.${difference[3]})</em></li>${existingList}`;
+      }
+
+      previousLapTime = lapTime;
+      lapTimeCount++;
     };
 
     this.reset = function () {
       duration = 0;
       updateHTMLTimerNow();
+
       lapTimes_list.innerHTML = `<li>Click the 'Lap' button while the stopwatch is running.</li>
       <li>Lap times will be displayed here.</li>`;
+      previousLapTime = undefined;
+      lapTimeCount = 1;
+
       isReset = true;
+    };
+
+    const calculateSecond = (duration = this.duration) => {
+      return Math.floor((duration / 10) % 60);
+    };
+
+    const calculateMinute = (duration = this.duration) => {
+      return Math.floor((duration / 600) % 60);
+    };
+
+    const calculateHour = (duration = this.duration) => {
+      return Math.floor((duration / 36000) % 60);
     };
 
     const updateDecisecondSpan = function () {
@@ -98,36 +145,32 @@ class Stopwatch {
     };
 
     const updateSecondSpan = function () {
-      let seconds = Math.floor((duration / 10) % 60);
+      let seconds = calculateSecond();
 
       if (seconds < 10) {
         second_span.innerHTML = `0${seconds}`;
-
       } else {
         second_span.innerHTML = seconds;
       }
     };
 
     const updateMinuteSpan = function () {
-      let minutes = Math.floor((duration / 600) % 60);
+      let minutes = calculateMinute();
 
       if (minutes < 10) {
         minute_span.innerHTML = `0${minutes}`;
-
       } else {
         minute_span.innerHTML = minutes;
       }
     };
 
     const updateHourSpan = function () {
-      let hours = Math.floor((duration / 36000) % 60);
+      let hours = calculateHour();
 
       if (hours < 10) {
         hour_span.innerHTML = `0${hours}`;
-
       } else if (hours > 98) {
         stop();
-
       } else {
         hour_span.innerHTML = hours;
       }
@@ -157,20 +200,16 @@ class Stopwatch {
     };
 
     let changeStartButtonName = () => {
-      
       if (isRunning) {
         start_button.innerHTML = 'Lap';
-
       } else {
         start_button.innerHTML = 'Start';
       }
     };
 
     let changeStopButtonName = () => {
-      
       if (isRunning) {
         stop_button.innerHTML = 'Stop';
-
       } else {
         stop_button.innerHTML = 'Reset';
       }
@@ -180,6 +219,8 @@ class Stopwatch {
     let timer = new Timer(incrementDuration, 100);
     let isRunning = false,
       isReset = true;
+    let previousLapTime = undefined;
+    let lapTimeCount = 1;
   }
 }
 
