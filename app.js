@@ -105,6 +105,14 @@ class Stopwatch {
           Math.abs(previousLapTime[3] - lapTime[3]),
         ];
 
+        for (let i = 0; i < difference.length - 1; i++) {
+          const element = difference[i];
+
+          if (element < 10) {
+            difference[i] = `0${element}`;
+          }
+        }
+
         lapTimes_list.innerHTML = `<li>${lapTimeCount}:- ${lapTime[0]}:${lapTime[1]}:${lapTime[2]}.${lapTime[3]} <em>(${difference[0]}:${difference[1]}:${difference[2]}.${difference[3]})</em></li>${existingList}`;
       }
       previousLapTime = lapTime;
