@@ -86,6 +86,14 @@ class Stopwatch {
         duration % 10,
       ];
 
+      for (let i = 0; i < lapTime.length - 1; i++) {
+        const element = lapTime[i];
+
+        if (element < 10) {
+          lapTime[i] = `0${element}`;
+        }
+      }
+
       if (lapTimeCount === 1) {
         lapTimes_list.innerHTML = `<li>${lapTimeCount}:- ${lapTime[0]}:${lapTime[1]}:${lapTime[2]}.${lapTime[3]}</li>`;
       } else {
