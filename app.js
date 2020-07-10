@@ -97,6 +97,7 @@ class Stopwatch {
       updateHTMLTimerNow();
       lapTimes_list.innerHTML = `<li>Click the 'Lap' button while the stopwatch is running.</li>
       <li>Lap times will be displayed here.</li>`;
+      previousLapTime = undefined;
       lapTimeCount = 1;
 
       isReset = true;
@@ -189,6 +190,7 @@ class Stopwatch {
     let timer = new Timer(incrementDuration, 100);
     let isRunning = false,
       isReset = true;
+    let previousLapTime = undefined;
     let lapTimeCount = 1;
   }
 }
