@@ -119,8 +119,8 @@ class Stopwatch {
       decisecond_span.innerHTML = duration % 10;
     };
 
-    const updateSecondSpan = function() {
-      let seconds = Math.floor((duration / 10) % 60);
+    const updateSecondSpan = function () {
+      let seconds = calculateSecond();
 
       if (seconds < 10) {
         second_span.innerHTML = `0${seconds}`;
