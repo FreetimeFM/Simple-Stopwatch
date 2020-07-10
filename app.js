@@ -130,8 +130,8 @@ class Stopwatch {
       }
     };
 
-    const updateMinuteSpan = function() {
-      let minutes = Math.floor((duration / 600) % 60);
+    const updateMinuteSpan = function () {
+      let minutes = calculateMinute();
 
       if (minutes < 10) {
         minute_span.innerHTML = `0${minutes}`;
