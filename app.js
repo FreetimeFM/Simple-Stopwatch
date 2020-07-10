@@ -29,15 +29,16 @@ class Stopwatch {
       },
     });
 
-    // if true, timer will be displayed on console.
-    this.displayTimer = function (value) {
-      isDisplayed = value;
-    };
-
-    this.setDuration = function (value) {
-      duration = value;
+    Object.defineProperty(this, 'durationInSeconds', {
+      get: () => {
+        return calculateSeconds();
+      },
+      set: elapsedSeconds => {
+        if (!Number.isInteger(elapsedSeconds)) throw new Error('Invalid input');
+        duration = elapsedSeconds * 10;
       updateHTMLTimerNow();
-    };
+      }
+    });
 
     // Increments duration variable. To be run when after every second.
     let incrementDuration = function () {
