@@ -111,6 +111,10 @@ class Stopwatch {
       return Math.floor((duration / 600) % 60);
     };
 
+    const calculateHour = (duration = this.duration) => {
+      return Math.floor((duration / 36000) % 60);
+    };
+
     const updateDecisecondSpan = function () {
       decisecond_span.innerHTML = duration % 10;
     };
