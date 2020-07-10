@@ -19,33 +19,31 @@ class Stopwatch {
 
     // Getter for duration.
     Object.defineProperty(this, 'duration', {
-      get: function() {
+      get: function () {
         return duration;
       },
     });
 
     // if true, timer will be displayed on console.
-    this.displayTimer = function(value) {
+    this.displayTimer = function (value) {
       isDisplayed = value;
     };
 
-    this.setDuration = function(value) {
+    this.setDuration = function (value) {
       duration = value;
       updateHTMLTimerNow();
     };
 
     // Increments duration variable. To be run when after every second.
-    let incrementDuration = function() {
+    let incrementDuration = function () {
       duration++;
       updateHTMLTimer();
     };
 
     // Starts the stopwatch.
-    this.start = function() {
-
+    this.start = function () {
       if (isRunning) {
         this.lap();
-
       } else {
         // start stopwatch.
         timer.start();
@@ -58,13 +56,11 @@ class Stopwatch {
     };
 
     // Stops the stopwatch.
-    this.stop = function() {
-
+    this.stop = function () {
       if (isRunning) {
         timer.stop();
         isRunning = false;
         updateHTMLTimerNow();
-
       } else {
         this.reset();
       }
@@ -73,7 +69,6 @@ class Stopwatch {
     };
 
     this.lap = () => {
-
       if (isReset) {
         lapTimes_list.innerHTML = ``;
       }
@@ -97,7 +92,8 @@ class Stopwatch {
       if (lapTimeCount === 1) {
         lapTimes_list.innerHTML = `<li>${lapTimeCount}:- ${lapTime[0]}:${lapTime[1]}:${lapTime[2]}.${lapTime[3]}</li>`;
       } else {
-      let existingList = lapTimes_list.innerHTML;
+        let existingList = lapTimes_list.innerHTML;
+
         let difference = [
           Math.abs(previousLapTime[0] - lapTime[0]),
           Math.abs(previousLapTime[1] - lapTime[1]),
@@ -115,13 +111,15 @@ class Stopwatch {
 
         lapTimes_list.innerHTML = `<li>${lapTimeCount}:- ${lapTime[0]}:${lapTime[1]}:${lapTime[2]}.${lapTime[3]} <em>(${difference[0]}:${difference[1]}:${difference[2]}.${difference[3]})</em></li>${existingList}`;
       }
+
       previousLapTime = lapTime;
       lapTimeCount++;
     };
 
-    this.reset = function() {
+    this.reset = function () {
       duration = 0;
       updateHTMLTimerNow();
+
       lapTimes_list.innerHTML = `<li>Click the 'Lap' button while the stopwatch is running.</li>
       <li>Lap times will be displayed here.</li>`;
       previousLapTime = undefined;
@@ -151,7 +149,6 @@ class Stopwatch {
 
       if (seconds < 10) {
         second_span.innerHTML = `0${seconds}`;
-
       } else {
         second_span.innerHTML = seconds;
       }
@@ -162,7 +159,6 @@ class Stopwatch {
 
       if (minutes < 10) {
         minute_span.innerHTML = `0${minutes}`;
-
       } else {
         minute_span.innerHTML = minutes;
       }
@@ -173,16 +169,14 @@ class Stopwatch {
 
       if (hours < 10) {
         hour_span.innerHTML = `0${hours}`;
-
       } else if (hours > 98) {
         stop();
-
       } else {
         hour_span.innerHTML = hours;
       }
     };
 
-    const updateHTMLTimer = function() {
+    const updateHTMLTimer = function () {
       updateDecisecondSpan();
 
       if (duration % 10 == 0) {
@@ -198,7 +192,7 @@ class Stopwatch {
       }
     };
 
-    const updateHTMLTimerNow = function() {
+    const updateHTMLTimerNow = function () {
       updateDecisecondSpan();
       updateSecondSpan();
       updateMinuteSpan();
@@ -206,20 +200,16 @@ class Stopwatch {
     };
 
     let changeStartButtonName = () => {
-
       if (isRunning) {
         start_button.innerHTML = 'Lap';
-
       } else {
         start_button.innerHTML = 'Start';
       }
     };
 
     let changeStopButtonName = () => {
-
       if (isRunning) {
         stop_button.innerHTML = 'Stop';
-
       } else {
         stop_button.innerHTML = 'Reset';
       }
@@ -251,12 +241,12 @@ class Timer {
     var expected, timeout;
     this.interval = interval;
 
-    this.start = function() {
+    this.start = function () {
       expected = Date.now() + this.interval;
       timeout = setTimeout(step, this.interval);
     };
 
-    this.stop = function() {
+    this.stop = function () {
       clearTimeout(timeout);
     };
 
