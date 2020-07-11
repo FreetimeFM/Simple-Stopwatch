@@ -54,3 +54,7 @@ Ex. `sw.durationInSeconds = 10` which set the stopwatch to 10 seconds.
 - [ ] Update all js code to ES6 standards.
 - [ ] Refine CSS.
 
+---
+
+## Screenshots
+
