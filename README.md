@@ -1,5 +1,7 @@
 ![Screenshot of the webpage](webpage_main.png)
 
+![alt](https://img.shields.io/github/license/FreetimeFM/Simple-Stopwatch)
+
 # Simple Stopwatch
 This website is a contains a simple stopwatch that is written in JavaScript. The whole point of this project was to practice the skills learned coding in JavaScript. In addition, to further develop knowledge of HTML and CSS.
 
