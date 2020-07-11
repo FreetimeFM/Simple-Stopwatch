@@ -11,3 +11,7 @@ The self-adjusting timer is provided by [Leon Williams](https://stackoverflow.co
 
 Want to use this code? [Read the license](LICENSE "MIT License").
 
+## Instructions
+To start the stopwatch click the *'Start'* button. While it is running, click the *'Lap'* button to record a specific time. The lap time will be displayed in the list below the stopwatch display. To stop, click the *'Stop'* button. The *'Start'* button will resume the counting while the *'Reset'* button will reset the display as well as the lap times displayed.
+
+---
