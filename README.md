@@ -1,5 +1,3 @@
-![Screenshot of the webpage](webpage_main.png)
-
 ![alt](https://img.shields.io/github/license/FreetimeFM/Simple-Stopwatch)
 
 # Simple Stopwatch
@@ -58,3 +56,4 @@ Ex. `sw.durationInSeconds = 10` which set the stopwatch to 10 seconds.
 
 ## Screenshots
 
+![Screenshot of the webpage](webpage_main.png)
