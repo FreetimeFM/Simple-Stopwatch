@@ -35,3 +35,9 @@ The list of lap times will display an index followed by the recorded time and th
 To start the stopwatch click the *'Start'* button. While it is running, click the *'Lap'* button to record a specific time. The lap time will be displayed in the list below the stopwatch display. To stop, click the *'Stop'* button. The *'Start'* button will resume the counting while the *'Reset'* button will reset the display as well as the lap times displayed.
 
 ---
+
+## Todo List
+- [ ] Format lap times from ugly list to a neat table.
+- [ ] Update all js code to ES6 standards.
+- [ ] Refine CSS.
+
