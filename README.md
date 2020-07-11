@@ -36,6 +36,19 @@ To start the stopwatch click the *'Start'* button. While it is running, click th
 
 ---
 
+## Extra Functionality
+You can get and the time elapsed in deci-seconds (one-tenth of a second) and seconds. This is done in the JavaScript console.  
+
+To get time in deci-seconds, type `sw.duration`.  
+To set, type `sw.duration = [value]`, where `[value]` is a positive integer.  
+Ex. `sw.duration = 100` which set the stopwatch to 10 seconds.
+
+To get time in seconds, type `sw.durationInSeconds`.  
+To set, type `sw.durationInSeconds = [value]`, where `[value]` is a positive integer.  
+Ex. `sw.durationInSeconds = 10` which set the stopwatch to 10 seconds.
+
+---
+
 ## Todo List
 - [ ] Format lap times from ugly list to a neat table.
 - [ ] Update all js code to ES6 standards.
