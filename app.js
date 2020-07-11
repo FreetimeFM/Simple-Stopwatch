@@ -74,51 +74,46 @@ class Stopwatch {
       changeStopButtonName();
     };
 
-    this.lap = () => {
+    const lap = () => {
       if (isReset) {
         lapTimes_list.innerHTML = ``;
-      }
       isReset = false;
+      }
 
+      const currentLapTime = duration;
       let lapTime = [
-        calculateHours(),
-        calculateMinutes(),
-        calculateSeconds(),
-        duration % 10,
+        calculateHours(currentLapTime),
+        calculateMinutes(currentLapTime),
+        calculateSeconds(currentLapTime),
+        currentLapTime % 10,
       ];
 
       for (let i = 0; i < lapTime.length - 1; i++) {
-        const element = lapTime[i];
-
-        if (element < 10) {
-          lapTime[i] = `0${element}`;
-        }
+        if (lapTime[i] < 10) lapTime[i] = `0${lapTime[i]}`;
       }
 
       if (lapTimeCount === 1) {
         lapTimes_list.innerHTML = `<li>${lapTimeCount}:- ${lapTime[0]}:${lapTime[1]}:${lapTime[2]}.${lapTime[3]}</li>`;
       } else {
         let existingList = lapTimes_list.innerHTML;
+        let difference = currentLapTime - previousLapTime;
 
-        let difference = [
-          Math.abs(previousLapTime[0] - lapTime[0]),
-          Math.abs(previousLapTime[1] - lapTime[1]),
-          Math.abs(previousLapTime[2] - lapTime[2]),
-          Math.abs(previousLapTime[3] - lapTime[3]),
+        let differenceArray = [
+          calculateHours(difference),
+          calculateMinutes(difference),
+          calculateSeconds(difference),
+          difference % 10,
         ];
 
-        for (let i = 0; i < difference.length - 1; i++) {
-          const element = difference[i];
-
-          if (element < 10) {
-            difference[i] = `0${element}`;
-          }
+        for (let i = 0; i < differenceArray.length - 1; i++) {
+          if (differenceArray[i] < 10)
+            differenceArray[i] = `0${differenceArray[i]}`;
         }
 
-        lapTimes_list.innerHTML = `<li>${lapTimeCount}:- ${lapTime[0]}:${lapTime[1]}:${lapTime[2]}.${lapTime[3]} <em>(${difference[0]}:${difference[1]}:${difference[2]}.${difference[3]})</em></li>${existingList}`;
+        lapTimes_list.innerHTML = `<li>${lapTimeCount}:- ${lapTime[0]}:${lapTime[1]}:${lapTime[2]}.${lapTime[3]} <em>(${differenceArray[0]}:${differenceArray[1]}:${differenceArray[2]}.${differenceArray[3]})</em></li>${existingList}`;
       }
 
-      previousLapTime = lapTime;
+      previousLapTime = currentLapTime;
       lapTimeCount++;
     };
 
