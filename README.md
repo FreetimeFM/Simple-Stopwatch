@@ -11,6 +11,24 @@ The self-adjusting timer is provided by [Leon Williams](https://stackoverflow.co
 
 Want to use this code? [Read the license](LICENSE "MIT License").
 
+---
+
+## Features
+So, what can this stopwatch do?  
+- To start, it can count the time elapsed to *(what I believe)* is pretty good accuracy.
+- The webpage has a responsive layout to adapt to smaller screens.
+- It can record lap times and display them in a legible format.
+- An accurate timer that doesn't drift.
+- The time difference of the recorded lap time and a previously recorded lap time will be displayed.
+
+Basically, the normal functionaity of a typical stopwatch.  
+
+The first unit of the stopwatch display is the Hour, then the minute unit, then the second unit followed lastly by the deci-second unit.
+
+The list of lap times will display an index followed by the recorded time and then the difference between the previous time.
+
+---
+
 ## Instructions
 To start the stopwatch click the *'Start'* button. While it is running, click the *'Lap'* button to record a specific time. The lap time will be displayed in the list below the stopwatch display. To stop, click the *'Stop'* button. The *'Start'* button will resume the counting while the *'Reset'* button will reset the display as well as the lap times displayed.
 
