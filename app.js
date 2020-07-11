@@ -10,40 +10,46 @@ class Stopwatch {
     const stop_button = document.getElementById('stop');
 
     start_button.addEventListener('click', () => {
-      sw.start();
+      start();
     });
 
     stop_button.addEventListener('click', () => {
-      sw.stop();
+      stop();
     });
 
-    // Getter for duration.
     Object.defineProperty(this, 'duration', {
-      get: function () {
+      get: () => {
         return duration;
+      },
+      set: elapsedDeciSeconds => {
+        if (!Number.isInteger(elapsedDeciSeconds))
+          throw new Error('Invalid input');
+        duration = elapsedDeciSeconds;
+        updateHTMLTimerNow();
       },
     });
 
-    // if true, timer will be displayed on console.
-    this.displayTimer = function (value) {
-      isDisplayed = value;
-    };
-
-    this.setDuration = function (value) {
-      duration = value;
-      updateHTMLTimerNow();
-    };
+    Object.defineProperty(this, 'durationInSeconds', {
+      get: () => {
+        return calculateSeconds();
+      },
+      set: elapsedSeconds => {
+        if (!Number.isInteger(elapsedSeconds)) throw new Error('Invalid input');
+        duration = elapsedSeconds * 10;
+        updateHTMLTimerNow();
+      },
+    });
 
     // Increments duration variable. To be run when after every second.
-    let incrementDuration = function () {
+    const incrementDuration = () => {
       duration++;
       updateHTMLTimer();
     };
 
     // Starts the stopwatch.
-    this.start = function () {
+    const start = () => {
       if (isRunning) {
-        this.lap();
+        lap();
       } else {
         // start stopwatch.
         timer.start();
@@ -56,67 +62,62 @@ class Stopwatch {
     };
 
     // Stops the stopwatch.
-    this.stop = function () {
+    const stop = () => {
       if (isRunning) {
         timer.stop();
         isRunning = false;
         updateHTMLTimerNow();
       } else {
-        this.reset();
+        reset();
       }
       changeStartButtonName();
       changeStopButtonName();
     };
 
-    this.lap = () => {
+    const lap = () => {
       if (isReset) {
         lapTimes_list.innerHTML = ``;
+        isReset = false;
       }
-      isReset = false;
 
+      const currentLapTime = duration;
       let lapTime = [
-        calculateHour(),
-        calculateMinute(),
-        calculateSecond(),
-        duration % 10,
+        calculateHours(currentLapTime),
+        calculateMinutes(currentLapTime),
+        calculateSeconds(currentLapTime),
+        currentLapTime % 10,
       ];
 
       for (let i = 0; i < lapTime.length - 1; i++) {
-        const element = lapTime[i];
-
-        if (element < 10) {
-          lapTime[i] = `0${element}`;
-        }
+        if (lapTime[i] < 10) lapTime[i] = `0${lapTime[i]}`;
       }
 
       if (lapTimeCount === 1) {
         lapTimes_list.innerHTML = `<li>${lapTimeCount}:- ${lapTime[0]}:${lapTime[1]}:${lapTime[2]}.${lapTime[3]}</li>`;
       } else {
         let existingList = lapTimes_list.innerHTML;
+        let difference = currentLapTime - previousLapTime;
 
-        let difference = [
-          Math.abs(previousLapTime[0] - lapTime[0]),
-          Math.abs(previousLapTime[1] - lapTime[1]),
-          Math.abs(previousLapTime[2] - lapTime[2]),
-          Math.abs(previousLapTime[3] - lapTime[3]),
+        let differenceArray = [
+          calculateHours(difference),
+          calculateMinutes(difference),
+          calculateSeconds(difference),
+          difference % 10,
         ];
 
-        for (let i = 0; i < difference.length - 1; i++) {
-          const element = difference[i];
-
-          if (element < 10) {
-            difference[i] = `0${element}`;
-          }
+        for (let i = 0; i < differenceArray.length - 1; i++) {
+          if (differenceArray[i] < 10)
+            differenceArray[i] = `0${differenceArray[i]}`;
         }
 
-        lapTimes_list.innerHTML = `<li>${lapTimeCount}:- ${lapTime[0]}:${lapTime[1]}:${lapTime[2]}.${lapTime[3]} <em>(${difference[0]}:${difference[1]}:${difference[2]}.${difference[3]})</em></li>${existingList}`;
+        lapTimes_list.innerHTML = `<li>${lapTimeCount}:- ${lapTime[0]}:${lapTime[1]}:${lapTime[2]}.${lapTime[3]} <em>(${differenceArray[0]}:${differenceArray[1]}:${differenceArray[2]}.${differenceArray[3]})</em></li>${existingList}`;
       }
 
-      previousLapTime = lapTime;
+      previousLapTime = currentLapTime;
       lapTimeCount++;
     };
 
-    this.reset = function () {
+    const reset = () => {
       duration = 0;
       updateHTMLTimerNow();
 
@@ -128,24 +129,24 @@ class Stopwatch {
       isReset = true;
     };
 
-    const calculateSecond = (duration = this.duration) => {
+    const calculateSeconds = (duration = this.duration) => {
       return Math.floor((duration / 10) % 60);
     };
 
-    const calculateMinute = (duration = this.duration) => {
+    const calculateMinutes = (duration = this.duration) => {
       return Math.floor((duration / 600) % 60);
     };
 
-    const calculateHour = (duration = this.duration) => {
+    const calculateHours = (duration = this.duration) => {
       return Math.floor((duration / 36000) % 60);
     };
 
-    const updateDecisecondSpan = function () {
+    const updateDecisecondSpan = () => {
       decisecond_span.innerHTML = duration % 10;
     };
 
-    const updateSecondSpan = function () {
-      let seconds = calculateSecond();
+    const updateSecondSpan = () => {
+      let seconds = calculateSeconds();
 
       if (seconds < 10) {
         second_span.innerHTML = `0${seconds}`;
@@ -154,8 +155,8 @@ class Stopwatch {
       }
     };
 
-    const updateMinuteSpan = function () {
-      let minutes = calculateMinute();
+    const updateMinuteSpan = () => {
+      let minutes = calculateMinutes();
 
       if (minutes < 10) {
         minute_span.innerHTML = `0${minutes}`;
@@ -164,8 +165,8 @@ class Stopwatch {
       }
     };
 
-    const updateHourSpan = function () {
-      let hours = calculateHour();
+    const updateHourSpan = () => {
+      let hours = calculateHours();
 
       if (hours < 10) {
         hour_span.innerHTML = `0${hours}`;
@@ -176,7 +177,7 @@ class Stopwatch {
       }
     };
 
-    const updateHTMLTimer = function () {
+    const updateHTMLTimer = () => {
       updateDecisecondSpan();
 
       if (duration % 10 == 0) {
@@ -192,14 +193,14 @@ class Stopwatch {
       }
     };
 
-    const updateHTMLTimerNow = function () {
+    const updateHTMLTimerNow = () => {
       updateDecisecondSpan();
       updateSecondSpan();
       updateMinuteSpan();
       updateHourSpan();
     };
 
-    let changeStartButtonName = () => {
+    const changeStartButtonName = () => {
       if (isRunning) {
         start_button.innerHTML = 'Lap';
       } else {
@@ -207,7 +208,7 @@ class Stopwatch {
       }
     };
 
-    let changeStopButtonName = () => {
+    const changeStopButtonName = () => {
       if (isRunning) {
         stop_button.innerHTML = 'Stop';
       } else {
@@ -216,7 +217,7 @@ class Stopwatch {
     };
 
     let duration = 0;
-    let timer = new Timer(incrementDuration, 100);
+    const timer = new Timer(incrementDuration, 100);
     let isRunning = false,
       isReset = true;
     let previousLapTime = undefined;
@@ -262,4 +263,4 @@ class Timer {
 }
 
 const sw = new Stopwatch();
-console.log('Script running.');
+console.log('Script loaded.');
