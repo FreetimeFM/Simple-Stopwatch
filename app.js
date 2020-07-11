@@ -35,7 +35,7 @@ class Stopwatch {
       },
       set: elapsedSeconds => {
         if (!Number.isInteger(elapsedSeconds)) throw new Error('Invalid input');
-        duration = elapsedSeconds * 10;
+        duration = Math.abs(elapsedSeconds * 10);
         updateHTMLTimerNow();
       },
     });
@@ -226,9 +226,9 @@ class Stopwatch {
 }
 
 /**
- * https://stackoverflow.com/a/44337628 by Leon Williams.
  * Self-adjusting interval to account for drifting.
- * Code adapted by A Baretto.
+ * @see https://stackoverflow.com/a/44337628
+ * @author Leon Williams, adapted by FreetimeFM
  *
  * @param {function} workFunc  Callback containing the work to be done
  *                             for each interval
