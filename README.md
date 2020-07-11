@@ -48,9 +48,7 @@ Ex. `sw.durationInSeconds = 10` which set the stopwatch to 10 seconds.
 ---
 
 ## Todo List
-- [ ] Format lap times from ugly list to a neat table.
-- [ ] Update all js code to ES6 standards.
-- [ ] Refine CSS.
+[Moved to projects section.](https://github.com/FreetimeFM/Simple-Stopwatch/projects/1) 
 
 ---
 
