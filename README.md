@@ -1,3 +1,5 @@
+![Screenshot of the webpage](webpage_main.png)
+
 # Simple Stopwatch
 This website is a contains a simple stopwatch that is written in JavaScript. The whole point of this project is to practice coding in JavaScript.
 
