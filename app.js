@@ -263,4 +263,4 @@ class Timer {
 }
 
 const sw = new Stopwatch();
-console.log('Script running.');
+console.log('Script loaded.');
