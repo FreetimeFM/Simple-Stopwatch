@@ -24,7 +24,7 @@ class Stopwatch {
       set: elapsedDeciSeconds => {
         if (!Number.isInteger(elapsedDeciSeconds))
           throw new Error('Invalid input');
-        duration = elapsedDeciSeconds;
+        duration = Math.abs(elapsedDeciSeconds);
         updateHTMLTimerNow();
       },
     });
